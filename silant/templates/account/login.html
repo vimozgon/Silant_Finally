@@ -1,0 +1,22 @@
+{% extends "default.html" %}
+
+{% block title %}
+Вход | Силант
+{% endblock title %}
+
+{% block content %}
+<div class="login">
+    <h2>Вход</h2>
+    <form method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form.as_div }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <div>
+            <button class="primaryAction" type="submit">Войти</button>
+        </div>
+    </form>
+
+</div>
+{% endblock content %}

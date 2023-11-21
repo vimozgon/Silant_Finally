@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content=""/>
+    <title>
+        {% block title %}
+        Силант
+        {% endblock %}
+    </title>
+    <link rel="icon" type="image/x-icon" href="{% static 'assets/favicon.ico' %}"/>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="{% static 'css/styles.css' %}" rel="stylesheet"/>
+    <link href="{% static 'fontawesome/css/all.css' %}" rel="stylesheet">
+    <script src="{% static 'js/common.js' %}"></script>
+</head>
+<body>
+<div class="root">
+    <header>
+        <div class="header-row">
+            <div class="logo">
+                <a href="https://silant.com/main/" target="_blank">
+                    <img src="/static/assets/logo-red.svg" alt="">
+                </a>
+            </div>
+            <div class="header-contact"><a href="tel:+7-8352-20-12-09">+7-8352-20-12-09</a> <a
+                    href="https://t.me/chzsa21" target="_blank">telegram</a></div>
+            <div class="header-auth">
+                {% if user.is_authenticated %}
+                <div class="user-name">
+                    Пользователь: {{ user }}
+                </div>
+                <div class="user-logout">
+                    <a href="/accounts/logout">
+                        Выход
+                    </a>
+                </div>
+                {% else %}
+                <div class="user-logout">
+                    <a href="/accounts/login">
+                        Вход
+                    </a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <h1>Электронная сервисная книжка "Мой Силант"</h1>
+    </header>
+    <main>
+        {% block content %}
+        {% endblock %}
+    </main>
+    <footer>
+        <div class="footer-contact"><a href="tel:+7-8352-20-12-09">+7-8352-20-12-09</a> <a
+                href="https://t.me/chzsa21" target="_blank">telegram</a></div>
+        <div class="footer-copyright">Мой Силант 2022</div>
+    </footer>
+</div>
+</body>
+</html>

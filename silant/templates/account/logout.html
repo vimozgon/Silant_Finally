@@ -1,0 +1,26 @@
+{% extends "default.html" %}
+
+{% block title %}
+Выход | Силант
+{% endblock title %}
+
+{% block content %}
+<div class="logout">
+    <h2>Выход</h2>
+
+
+    <form method="post" action="{% url 'account_logout' %}">
+        <div>Вы действительно хотите выйти?</div>
+        {% csrf_token %}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+        {% endif %}
+        <div>
+            <button type="submit">Выйти</button>
+        </div>
+    </form>
+
+</div>
+
+
+{% endblock content %}
